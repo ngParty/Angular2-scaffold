@@ -1,0 +1,14 @@
+# ignore npm modules
+node_modules
+
+# Typescript type definition installed by typings npm module
+typings
+
+# Ignore distribuition folder for copyied / builded / bundled files
+dist
+
+# IDE specific folders
+.idea
+
+# Ignore javascript generted files and their respective maps
+src/client/**/*.js*

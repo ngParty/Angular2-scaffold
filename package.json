@@ -1,0 +1,41 @@
+{
+  "name": "angular2-scaffold",
+  "version": "1.0.0",
+  "description": "Angular 2 scaffold",
+  "dependencies": {
+    "angular2": "2.0.0-beta.9",
+    "es6-promise": "3.1.2",
+    "es6-shim": "0.33.13",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.2",
+    "zone.js": "0.5.15"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "1.1.1",
+    "ts-loader": "0.8.1",
+    "typings": "0.7.8",
+    "webpack": "2.1.0-beta.4",
+    "webpack-dev-server": "2.0.0-beta"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --inline --context src/client",
+    "test": "karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngParty/Angular2-scaffold.git"
+  },
+  "keywords": [
+    "angular2",
+    "typescript",
+    "scaffold"
+  ],
+  "contributors": [
+    "Mario Vejlupek <mario@vejlupek.cz>"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ngParty/Angular2-scaffold/issues"
+  },
+  "homepage": "https://github.com/ngParty/Angular2-scaffold#readme"
+}

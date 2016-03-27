@@ -45,6 +45,8 @@ const config = {
       host: 'localhost'
     }),
 
+    // Reference: https://github.com/kevlened/copy-webpack-plugin#usage
+    // Copy static assests
     new CopyWebpackPlugin([
       {
         from: 'src/client/assets',

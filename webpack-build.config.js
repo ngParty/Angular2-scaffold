@@ -32,4 +32,15 @@ webpackConfig.plugins.push(
 
 );
 
+
+// Reference: https://github.com/wbuchwalter/tslint-loader#usage
+webpackConfig.tslint = {
+
+  // tslint does not interrupt the compilation by default
+  // if you want any file with tslint errors to fail
+  // set failOnHint to true
+  failOnHint: true
+
+}
+
 module.exports = webpackConfig;

@@ -6,21 +6,36 @@ const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
 
 const config = {
 
+  // Reference: https://webpack.github.io/docs/configuration.html#context
+  context: path.resolve( __dirname, 'src/client' ),
+
+  // Reference: https://webpack.github.io/docs/configuration.html#entry
   entry: {
-    'vendor': './src/client/vendor',
-    'app': './src/client/main'
+    'vendor': './vendor',
+    'app': './main'
   },
 
+  // Reference: https://webpack.github.io/docs/configuration.html#output
   output: {
     path: path.resolve( __dirname, 'dist' ),
     filename: '[name].js'
   },
 
+  // Reference: https://webpack.github.io/docs/configuration.html#resolve
   resolve: {
     extensions: ['', '.ts', '.js']
   },
 
+  // Reference: https://webpack.github.io/docs/configuration.html#module
   module: {
+
+    preLoaders: [
+      {
+        test: /\.ts$/,
+        loader: "tslint-loader"
+      }
+    ],
+
     loaders: [
       { test: /\.ts$/, exclude: /node_modules/, loader: 'awesome-typescript-loader' },
       { test: /\.json$/, loader: 'json-loader' } // See https://github.com/webpack/webpack/issues/592
@@ -30,6 +45,7 @@ const config = {
   // Reference: // Set source map processor see https://webpack.github.io/docs/configuration.html#devtool
   devtool: 'source-map',
 
+  // Reference: https://webpack.github.io/docs/list-of-plugins.html
   plugins: [
 
     // Reference: https://webpack.github.io/docs/list-of-plugins.html#environmentplugin
@@ -41,7 +57,7 @@ const config = {
     // Reference: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
     // Copy template to dist folder
     new HtmlWebpackPlugin({
-      template: 'src/client/index.html',
+      template: 'index.html',
       host: 'localhost'
     }),
 
@@ -49,12 +65,13 @@ const config = {
     // Copy static assests
     new CopyWebpackPlugin([
       {
-        from: 'src/client/assets',
+        from: 'assets',
         to: './assets'
       }
     ])
 
   ]
+
 };
 
 module.exports = config;

@@ -1,9 +1,13 @@
 import { Component } from 'angular2/core';
 
 @Component({
-    selector: 'app',
-    template: `
-        <h1>the title</h1>
-    `
+  selector: 'app',
+  template: `
+  <h1>App is {{ state }}</h1>
+  `
 })
-export class AppComponent{}
+export class AppComponent {
+
+  state: string = `Running!`
+
+}

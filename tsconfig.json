@@ -1,18 +1,22 @@
 {
+  "buildOnSave": false,
+  "compileOnSave": false,
   "compilerOptions": {
-    "module": "system", /* Specify in which format are modules generated */
-    "target": "es6", /* Specify target ECMAScript version */
+    "module": "commonjs", /* Specify in which format are modules generated,
+                             can't go with es6 until https://github.com/Microsoft/TypeScript/issues/6319 is resolved */
+    "target": "es5", /* Specify target ECMAScript version */
     "noImplicitAny": true, /* Warn on expressions with unspecified type */
     "sourceMap": true, /* Generate source maps for easier debugging */
     "emitDecoratorMetadata": true, /* ??? */
     "experimentalDecorators": true, /* Enable ES7 decorators */
     "moduleResolution": "node", /* Resolve modules in node_modules */
-    "removeComments": false /* No comment :) */
+    "removeComments": false, /* No comment :) */
+    "outDir": "ts-output/" /* Generate js files to another folder */
   },
   /* Exclude node_modules and typings */
   "exclude": [
     "node_modules",
-    "typings/main",
-    "typings/main.d.ts"
+    "typings/main.d.ts",
+    "typings/main"
   ]
 }

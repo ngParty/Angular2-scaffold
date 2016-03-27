@@ -1,52 +1,58 @@
-// TODO
-// const webpack = require( 'webpack' );
-
-// TODO
-const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
-
-// TODO
+const webpack = require( 'webpack' );
 const path = require( 'path' );
 
-module.exports = {
+const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
+const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
 
-  // Set source map processor see https://webpack.github.io/docs/configuration.html#devtool
-  devtool: `cheap-module-eval-source-map`,
+const config = {
 
-  // Set root client folder https://webpack.github.io/docs/configuration.html#context
-  context: path.join( __dirname, `./src/client` ),
-
-  // Bundles source files see https://webpack.github.io/docs/configuration.html#entry
   entry: {
-    app: `./bootstrap`
+    'vendor': './src/client/vendor',
+    'app': './src/client/main'
   },
 
-  // Generated bundles location
   output: {
-    path: `/`, // Physical
-    publicPath: `/`, // on client
-    filename: `[name].js` // set filename format
+    path: path.resolve( __dirname, 'dist' ),
+    filename: '[name].js'
   },
 
-  // Add typescript extension resolution so you don't have to type it
-  // see https://webpack.github.io/docs/configuration.html#resolve-extensions
   resolve: {
-    extensions: [
-      ``, `.ts`
-    ]
+    extensions: ['', '.ts', '.js']
   },
 
-  // TODO
   module: {
     loaders: [
-      {
-        test: /\.ts$/, exclude: /node_modules/, loader: 'ts'
-      }
+      { test: /\.ts$/, exclude: /node_modules/, loader: 'awesome-typescript-loader' },
+      { test: /\.json$/, loader: 'json-loader' } // See https://github.com/webpack/webpack/issues/592
     ]
   },
 
-  // TODO
-  plugins: [
-    new CopyWebpackPlugin([{ from: './index.html' }], {})
-  ]
+  // Reference: // Set source map processor see https://webpack.github.io/docs/configuration.html#devtool
+  devtool: 'source-map',
 
+  plugins: [
+
+    // Reference: https://webpack.github.io/docs/list-of-plugins.html#environmentplugin
+    // This plugin will allow you to access to referenced environment variables through process.env
+    new webpack.EnvironmentPlugin([
+      'NODE_ENV'
+    ]),
+
+    // Reference: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
+    // Copy template to dist folder
+    new HtmlWebpackPlugin({
+      template: 'src/client/index.html',
+      host: 'localhost'
+    }),
+
+    new CopyWebpackPlugin([
+      {
+        from: 'src/client/assets',
+        to: './assets'
+      }
+    ])
+
+  ]
 };
+
+module.exports = config;

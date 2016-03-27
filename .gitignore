@@ -12,3 +12,6 @@ dist
 
 # Ignore javascript generted files and their respective maps
 src/client/**/*.js*
+
+# Ignore all typescript generated files
+ts-output

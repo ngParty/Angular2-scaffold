@@ -9,8 +9,15 @@ $ npm install
 ## Start Development
 
 ```bash
-$ npm start
+$ npm run web:dev
 ```
 
-open http://localhost:4321
+open http://localhost:8080
 
+## Build
+
+```bash
+$ npm run web:build
+```
+
+Publish files in `dist` folder to the server.

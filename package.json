@@ -10,6 +10,7 @@
   "devDependencies": {
     "awesome-typescript-loader": "0.17.0-rc.2",
     "copy-webpack-plugin": "1.1.1",
+    "gh-pages-deploy": "0.4.2",
     "html-webpack-plugin": "2.14.0",
     "json-loader": "0.5.4",
     "tslint": "3.6.0",
@@ -39,5 +40,12 @@
   "bugs": {
     "url": "https://github.com/ngParty/Angular2-scaffold/issues"
   },
-  "homepage": "https://github.com/ngParty/Angular2-scaffold#readme"
+  "homepage": "https://github.com/ngParty/Angular2-scaffold#readme",
+  "gh-pages-deploy": {
+    "staticpath": "dist",
+    "prep": [
+      "web:build"
+    ],
+    "noprompt": true
+  }
 }

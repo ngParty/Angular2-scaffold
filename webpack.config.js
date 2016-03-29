@@ -4,26 +4,30 @@ const path = require( 'path' );
 const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
 const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
 
-const config = {
+module.exports = {
 
   // Reference: https://webpack.github.io/docs/configuration.html#context
+  // Path where entries are resolved
   context: path.resolve( __dirname, 'src/client' ),
 
   // Reference: https://webpack.github.io/docs/configuration.html#entry
+  // Exported bundles
   entry: {
     'vendor': './vendor',
     'app': './main'
   },
 
   // Reference: https://webpack.github.io/docs/configuration.html#output
+  // Export bundles target location and naming
   output: {
     path: path.resolve( __dirname, 'dist' ),
     filename: '[name].js'
   },
 
   // Reference: https://webpack.github.io/docs/configuration.html#resolve
+  // import "vendor" instead of import "vendor.ts"
   resolve: {
-    extensions: ['', '.ts', '.js']
+    extensions: [ '', '.ts', '.js' ]
   },
 
   // Reference: https://webpack.github.io/docs/configuration.html#module
@@ -36,13 +40,15 @@ const config = {
       }
     ],
 
+    // Transpilers and preprocessors
     loaders: [
       { test: /\.ts$/, exclude: /node_modules/, loader: 'awesome-typescript-loader' },
       { test: /\.json$/, loader: 'json-loader' } // See https://github.com/webpack/webpack/issues/592
     ]
   },
 
-  // Reference: // Set source map processor see https://webpack.github.io/docs/configuration.html#devtool
+  // Set source map processor
+  // Reference: https://webpack.github.io/docs/configuration.html#devtool
   devtool: 'source-map',
 
   // Reference: https://webpack.github.io/docs/list-of-plugins.html
@@ -62,7 +68,7 @@ const config = {
     }),
 
     // Reference: https://github.com/kevlened/copy-webpack-plugin#usage
-    // Copy static assests
+    // Copy static assets
     new CopyWebpackPlugin([
       {
         from: 'assets',
@@ -74,4 +80,3 @@ const config = {
 
 };
 
-module.exports = config;

@@ -1,13 +1,13 @@
-{
-  "buildOnSave": false,
-  "compileOnSave": false,
+{ /* Reference: http://www.typescriptlang.org/docs/handbook/tsconfig.json.html */
+  "buildOnSave": false, /* Atom specific https://github.com/TypeStrong/atom-typescript/blob/master/docs/tsconfig.md#buildonsave */
+  "compileOnSave": false, /* Visual Studio 2015 / Atom specific http://www.typescriptlang.org/docs/handbook/tsconfig.json.html#compileonsave */
   "compilerOptions": {
     "module": "commonjs", /* Specify in which format are modules generated,
                              can't go with es6 until https://github.com/Microsoft/TypeScript/issues/6319 is resolved */
     "target": "es5", /* Specify target ECMAScript version */
     "noImplicitAny": true, /* Warn on expressions with unspecified type */
     "sourceMap": true, /* Generate source maps for easier debugging */
-    "emitDecoratorMetadata": true, /* ??? */
+    "emitDecoratorMetadata": true, /* Needed for dependency injection */
     "experimentalDecorators": true, /* Enable ES7 decorators */
     "moduleResolution": "node", /* Resolve modules in node_modules */
     "removeComments": false, /* No comment :) */
